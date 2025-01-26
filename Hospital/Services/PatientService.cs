@@ -17,9 +17,9 @@ public class PatientService : IPatientService
         }
 
 
-    public async Task<List<Patient>> GetAllPatientsAsync()
+    public async Task<List<Patient>> GetAllPatientsAsync(int pageNumber, int pageSize)
     {
-        return await _patientCollection.Find(_ => true).ToListAsync();
+        return await _patientCollection.Find(p => true).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
     }
     public async Task<Patient> GetPatientByIdAsync(int id)
         {
@@ -31,8 +31,21 @@ public class PatientService : IPatientService
             await _patientCollection.InsertOneAsync(patient);
             return patient;
         }
+    public async Task<Patient> UpdateMedicalHistoryAsync(int id, string UpdateMedicalHistory)
+        {
+            var updated= Builders<Patient>.Update.Set(p=>p.MedicalHistory,UpdateMedicalHistory);
+           var result= await _patientCollection.UpdateOneAsync(p => p.Id==id,updated);
+            if(result.MatchedCount==0){
+                throw new Exception("no matching patient found");
+            }
+            return await _patientCollection.Find(p=> p.Id ==id).FirstOrDefaultAsync();
+        }
     
-        
+     public async Task<bool> DeleteAsync(int id)
+        {
+            var result = await _patientCollection.DeleteOneAsync(p => p.Id == id);
+            return result.DeletedCount > 0;
+        }   
 
    
 }

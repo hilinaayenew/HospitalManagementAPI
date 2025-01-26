@@ -15,9 +15,10 @@ public class PatientController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Patient>>> GetAllPatients()
+    public async Task<ActionResult<List<Patient>>> GetAllPatients(int pageNumber, int pageSize)
         {
-            var patient = await _patientService.GetAllPatientsAsync();
+            var patient = await _patientService.GetAllPatientsAsync(pageNumber, pageSize);
+            
             return Ok(patient);
         }
 
@@ -25,10 +26,10 @@ public class PatientController : ControllerBase
     
     public ActionResult<Patient> GetPatientByID(int id)
         {
-            var patient =  _patientService.GetPatientByIdAsync(id);
+            var patient = _patientService.GetPatientByIdAsync(id);
             if (patient == null)
             {
-                return NotFound($"Pokemon with ID {id} not found.");
+                return NotFound($"Patient with ID {id} not found.");
             }
             return Ok(patient);
         }
@@ -39,10 +40,31 @@ public class PatientController : ControllerBase
         {
             if (newPatient == null)
             {
-                return BadRequest("The Pokemon data is empty. Retry!");
+                return BadRequest("The Patient data is empty. Retry!");
             }
             var patient = await _patientService.CreatePatientAsync(newPatient);
             return CreatedAtAction(nameof(GetPatientByID), new { id = patient.Id }, patient);
         }
+    [HttpPut("update medical history/{id}")]
+    public async Task<IActionResult> UpdateMedicalHistory(int id,[FromBody] string medicalHistory)
+        {
+                try{
+                   var updated= await _patientService.UpdateMedicalHistoryAsync(id,medicalHistory);
+                    return Ok(updated);
+                }
+                catch(Exception ex){
+                     return NotFound(ex.Message);
+                }  
+
+        }
+    public async Task<ActionResult> DeletePatient(int id)
+        {
+            var deleted = await _patientService.DeleteAsync(id);
+            if (deleted)
+            {
+                return Ok($"Patient with ID {id} deleted successfully.");
+            }
+            return NotFound($"Patient with ID {id} not found.");
+        }    
 }
 }

@@ -13,4 +13,5 @@ public class Patient
     [Range(0, 100)]
     public int? Age { get; set; }
     public string? Gender { get; set; }
+    public string? MedicalHistory{get;set;}
 }

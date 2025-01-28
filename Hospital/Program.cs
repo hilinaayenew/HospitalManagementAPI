@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // register PokemonService as a service
 builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 
 var app = builder.Build();

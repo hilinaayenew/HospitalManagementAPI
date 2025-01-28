@@ -11,7 +11,10 @@ public interface IPatientService
     Task<Patient> UpdateMedicalHistoryAsync(int id, string MedicalHistory);
     Task<bool> DeleteAsync(int id);
 }
-public interface IDoctor{
-
+public interface IDoctorService{
+    Task<List<Doctor>> GetAllDoctorsAsync(int pageNumber, int pageSize);
+    Task<Doctor> GetDoctorByIdAsync(int id);
+    Task <Doctor> CreateDoctorAsync(Doctor doctor);
+    Task<bool> DeleteAsync(int id);
 }
 }

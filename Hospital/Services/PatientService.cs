@@ -19,7 +19,15 @@ public class PatientService : IPatientService
 
     public async Task<List<Patient>> GetAllPatientsAsync(int pageNumber, int pageSize)
     {
-        return await _patientCollection.Find(p => true).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
+       var sortDefinition = true 
+        ? Builders<Patient>.Sort.Ascending(p => p.Name) 
+        : Builders<Patient>.Sort.Descending(p => p.Name);
+         if (pageNumber <= 0 || pageSize <= 0)
+         {
+        // Return all patients if pageNumber or pageSize is invalid
+        return await _patientCollection.Find(_ => true).Sort(sortDefinition).ToListAsync();
+        }
+        return await _patientCollection.Find(p => true).Sort(sortDefinition).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
     }
     public async Task<Patient> GetPatientByIdAsync(int id)
         {
@@ -28,6 +36,7 @@ public class PatientService : IPatientService
 
     public async Task<Patient> CreatePatientAsync(Patient patient)
         {
+                   
             await _patientCollection.InsertOneAsync(patient);
             return patient;
         }

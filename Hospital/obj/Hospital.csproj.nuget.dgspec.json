@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj": {}
+    "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj": {
+    "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+        "projectUniqueName": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
         "projectName": "Hospital",
-        "projectPath": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\obj\\",
+        "projectPath": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+        "packagesPath": "C:\\Users\\mhdr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\mhdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -32,7 +32,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -66,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1025,19 +1025,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mhdr\\.nuget\\packages\\": {}
+    "C:\\Users\\meron\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+      "projectUniqueName": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
       "projectName": "Hospital",
-      "projectPath": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
-      "packagesPath": "C:\\Users\\mhdr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mhdr\\HospitalManagementAPI\\Hospital\\obj\\",
+      "projectPath": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+      "packagesPath": "C:\\Users\\meron\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mhdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\meron\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1055,13 +1055,7 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net6.0": {
@@ -1095,7 +1089,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
       }
     }
   }

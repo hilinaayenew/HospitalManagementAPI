@@ -47,3 +47,28 @@ public class Doctor
     [Required (ErrorMessage = "Speciality is required.")]
     public string? Speciality { get; set; }
 }
+
+public class Appointment
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.Int32)]
+    public int Id { get; set; }
+
+    [Required (ErrorMessage = "Patient ID  is required.")]
+    public int PatientId { get; set; }
+
+    [Required (ErrorMessage = "Doctor ID  is required.")]
+    public int DoctorId { get; set; }
+
+    [Required (ErrorMessage = "Date  is required.")]
+    public DateTime ADate { get; set; }
+  
+}
+public class Counter
+{
+    [BsonId]
+
+    
+    public string Id { get; set; } 
+    public int SequenceValue { get; set; }
+}

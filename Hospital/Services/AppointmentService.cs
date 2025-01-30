@@ -26,9 +26,13 @@ namespace Hospital.Services
         public async Task<List<Appointment>> GetAllAppointmentsAsync(int pageNumber, int pageSize)
         {
             var sortDefinition = Builders<Appointment>.Sort.Ascending(a => a.ADate);
-            if (pageNumber <= 0 || pageSize <= 0)
+            if (pageNumber == 1 && pageSize < 0)
             {
                 return await _appointmentCollection.Find(_ => true).Sort(sortDefinition).ToListAsync();
+            }
+            if (pageNumber <= 0 || pageSize <= 0)
+            {
+                  return new List<Appointment>();
             }
             return await _appointmentCollection.Find(a => true).Sort(sortDefinition).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
         }
@@ -79,7 +83,7 @@ namespace Hospital.Services
 
             if (existingAppointmentsP.Any())
             {
-                throw new Exception("The appointment must be at least 2 hours away from the last appointment for the same person.");
+                throw new Exception("The appointment must be at least 2 hours away from the last appointment for the same patient.");
             }
             
              appointment.Id = await _counterService.GetNextSequenceAsync("appointmentId");

@@ -14,21 +14,26 @@ namespace Hospital.Services
         {
             var client = new MongoClient(configuration["MongoDbSettings:ConnectionString"]);
             var database = client.GetDatabase(configuration["MongoDbSettings:DatabaseName"]);
-            _patientCollection = database.GetCollection<Patient>("Patient");
+            _patientCollection = database.GetCollection<Patient>("Patient");    
             _counterService = counterService;
         }
 
 
         public async Task<List<Patient>> GetAllPatientsAsync(int pageNumber, int pageSize)
         {
-        var sortDefinition = true 
-            ? Builders<Patient>.Sort.Ascending(p => p.Name) 
-            : Builders<Patient>.Sort.Descending(p => p.Name);
+        var sortDefinition =  Builders<Patient>.Sort.Ascending(p => p.Name);
+          
+
+             
+            if (pageNumber == 1 && pageSize < 0)
+            {
+                 return await _patientCollection.Find( p=> true).Sort(sortDefinition).ToListAsync();
+            }
             if (pageNumber <= 0 || pageSize <= 0)
             {
-            // Return all patients if pageNumber or pageSize is invalid
-            return await _patientCollection.Find(_ => true).Sort(sortDefinition).ToListAsync();
+                  return new List<Patient>();
             }
+             
             return await _patientCollection.Find(p => true).Sort(sortDefinition).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
         }
         public async Task<Patient> GetPatientByIdAsync(int id)
@@ -44,12 +49,16 @@ namespace Hospital.Services
         }
         public async Task<Patient> UpdateMedicalHistoryAsync(int id, string UpdateMedicalHistory)
         {
+             if(UpdateMedicalHistory == ""){
+                throw new Exception (" medical history is required");
+             }
             var updated= Builders<Patient>.Update.Set(p=>p.MedicalHistory,UpdateMedicalHistory);
             var result= await _patientCollection.UpdateOneAsync(p => p.Id==id,updated);
             if(result.MatchedCount==0)
             {
                 throw new Exception("no matching patient found");
             }
+           
                 return await _patientCollection.Find(p=> p.Id ==id).FirstOrDefaultAsync();
         }
     

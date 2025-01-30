@@ -1025,19 +1025,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\meron\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
       "projectName": "Hospital",
-      "projectPath": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
-      "packagesPath": "C:\\Users\\meron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\meron\\HospitalManagementAPI\\Hospital\\obj\\",
+      "projectPath": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\Hospital.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\HospitalManagementAPI\\Hospital\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\meron\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

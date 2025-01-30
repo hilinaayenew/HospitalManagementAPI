@@ -50,7 +50,7 @@ namespace Hospital.Controllers
                         
                 if (ex.Message.Contains("duplicate key error"))
                 {
-                    return Conflict($"A Doctor with ID {newPatient.Id} already exists.");
+                    return Conflict($"A Patient with ID {newPatient.Id} already exists.");
                 }
                     return StatusCode(500, "An unexpected error occurred."); 
             }

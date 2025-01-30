@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace Hospital.Models;
  
@@ -19,7 +20,7 @@ public class Patient
     public int? Age { get; set; }
 
     [Required (ErrorMessage = "Gender is required.")]
-     [RegularExpression("Male|Female", ErrorMessage = "Gender must be either 'Male' or 'Female'.")]
+     [RegularExpression("Male|Female|male|female", ErrorMessage = "Gender must be either 'Male' or 'Female'.")]
     public String? Gender { get; set; }
 
     [Required (ErrorMessage = "Medical history is required.")]
@@ -41,7 +42,7 @@ public class Doctor
     public int? Age { get; set; }
 
     [Required (ErrorMessage = "Gender is required.")]
-    [RegularExpression("Male|Female", ErrorMessage = "Gender must be either 'Male' or 'Female'.")]
+    [RegularExpression("Male|Female|male|female", ErrorMessage = "Gender must be either 'Male' or 'Female'.")]
     public String? Gender { get; set; }
 
     [Required (ErrorMessage = "Speciality is required.")]
@@ -67,8 +68,13 @@ public class Appointment
 public class Counter
 {
     [BsonId]
-
-    
     public string Id { get; set; } 
     public int SequenceValue { get; set; }
 }
+
+
+
+
+
+
+

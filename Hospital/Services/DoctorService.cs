@@ -21,12 +21,17 @@ namespace Hospital.Services
 
         public async Task<List<Doctor>> GetAllDoctorsAsync(int pageNumber, int pageSize)
         {
-            var sortDefinition = true ? Builders<Doctor>.Sort.Ascending(p => p.Name) : Builders<Doctor>.Sort.Descending(p => p.Name);
-            if (pageNumber <= 0 || pageSize <= 0)
+            var sortDefinition = Builders<Doctor>.Sort.Ascending(p => p.Name);
+              if (pageNumber == 1 && pageSize < 0)
             {
-                return await _doctorCollection.Find(_ => true).Sort(sortDefinition).ToListAsync();
+                 return await _doctorCollection.Find( p=> true).Sort(sortDefinition).ToListAsync();
             }
-                return await _doctorCollection.Find(p => true).Sort(sortDefinition).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
+             
+             if (pageNumber <= 0 || pageSize <= 0)
+            {
+                  return new List<Doctor>();
+            }
+            return await _doctorCollection.Find(p => true).Sort(sortDefinition).Skip((pageNumber - 1) * pageSize).Limit(pageSize).ToListAsync();
         }
         public async Task<Doctor> GetDoctorByIdAsync(int id)
         {

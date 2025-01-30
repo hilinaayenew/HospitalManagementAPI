@@ -37,7 +37,7 @@ public class Doctor
     [Required (ErrorMessage = "Name is required.")]
     public string? Name { get; set; }
 
-     [Range (24, 80, ErrorMessage = "Age must be between 0 and 100.")]
+     [Range (24, 80, ErrorMessage = "Age must be between 24 and 80.")]
     [Required (ErrorMessage = "Age is required.")]
     public int? Age { get; set; }
 
